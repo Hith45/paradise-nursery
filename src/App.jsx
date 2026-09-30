@@ -1,11 +1,16 @@
 import { useState } from "react";
 import "./App.css";
 import AboutUs from "./components/AboutUs";
+import ProductList from "./components/ProductList";
 
 function App() {
-    const [started, setStarted] = useState(false);
+    const [page, setPage] = useState("home");
 
-    if (started) {
+    if (page === "plants") {
+        return <ProductList />;
+    }
+
+    if (page === "about") {
         return (
             <div>
                 <AboutUs />
@@ -13,7 +18,7 @@ function App() {
                 <div style={{ textAlign: "center", margin: "30px" }}>
                     <button
                         className="get-started"
-                        onClick={() => setStarted(false)}
+                        onClick={() => setPage("home")}
                     >
                         Back to Home
                     </button>
@@ -35,7 +40,7 @@ function App() {
 
                 <button
                     className="get-started"
-                    onClick={() => setStarted(true)}
+                    onClick={() => setPage("plants")}
                 >
                     Get Started
                 </button>
